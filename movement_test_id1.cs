@@ -8,15 +8,10 @@ public class Movement : MonoBehaviour
 {
     private Rigidbody rb;
     private float timePlayed;
-    public GameObject EndScreen;
-    public AudioSource main_music;
-
     void Start()
     {
         Elements();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-        EndScreen.SetActive(false);
-        main_music.Play();
     }
     public float speed = 10.0f;
     void Update()
@@ -28,6 +23,9 @@ public class Movement : MonoBehaviour
 
         transform.position = transform.position + new Vector3(horizontal, 0, vertical) * speed * Time.deltaTime;
 
+        if(Input.GetAxis("Horizontal") == true){
+            
+        }
     }
 
     private void Elements()
@@ -35,3 +33,4 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 }
+
