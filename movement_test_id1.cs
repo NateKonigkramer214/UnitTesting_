@@ -1,33 +1,37 @@
-/* Basic Unit Test Code for Movement */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-[Test]
-public class PlayerMovement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     private Rigidbody rb;
+    private float timePlayed;
+    public GameObject EndScreen;
+    public AudioSource main_music;
 
-    void Start() {
-        Elements();
-    }
-
-    void Update() 
+    void Start()
     {
-        //Getting the input
+        Elements();
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        EndScreen.SetActive(false);
+        main_music.Play();
+    }
+    public float speed = 10.0f;
+    void Update()
+    {
+        
+        timePlayed += Time.deltaTime;
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        //Transforming the position of the player
         transform.position = transform.position + new Vector3(horizontal, 0, vertical) * speed * Time.deltaTime;
+
     }
 
     private void Elements()
     {
-        rb = GetComponent<Rigidbody>()
+        rb = GetComponent<Rigidbody>();
     }
-
 }
