@@ -50,11 +50,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Fall"))
-        {
-            //Invoke("restart", 3f);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
 
         // Reset the ability to jump if the player lands on the ground
         if (collision.gameObject.layer == groundLayer)
